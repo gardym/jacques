@@ -1,0 +1,45 @@
+#!/usr/bin/env node
+
+var fs = require('fs'),
+    colors = require('colors'),
+    program = require('commander'),
+    run = require('../lib/run');
+
+program
+  .option('-n, --no-colors', 'No colors')
+  .option('-f, --name-only', 'Only print the names of files with matching properties')
+  .parse(process.argv);
+
+var accessor = program.args[0],
+    files = program.args.slice(1);
+
+var colorize = function(str, color) {
+  if(!program.colors) {
+    return str;
+  }
+
+  return str[color];
+};
+
+var runFromFile = function(file, accessor) {
+  fs.readFile(file, function(err, contents) {
+    if(err) {
+      console.log("Error reading: %s", file);
+      throw err;
+    }
+
+    var result = run.inContext(accessor, contents);
+
+    if(result) {
+      console.log(colorize(file, 'cyan'));
+      if(!program.nameOnly) {
+        console.log(result);
+      }
+    }
+  });
+};
+
+files.forEach(function(fileName) {
+  runFromFile(fileName, accessor);
+});
+

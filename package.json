@@ -1,0 +1,21 @@
+{
+  "name": "jat",
+  "version": "0.0.0",
+  "description": "Access JSON",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "jat": "./bin/jat"
+  },
+  "dependencies": {
+    "colors": "*",
+    "commander": "*"
+  },
+  "devDependencies": {
+    "jasmine-node": "*"
+  },
+  "author": "Mike Gardiner",
+  "license": "BSD-2-Clause"
+}
