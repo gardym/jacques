@@ -1,5 +1,5 @@
 {
-  "name": "jat",
+  "name": "jaq",
   "version": "0.0.0",
   "description": "Access JSON",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "bin": {
-    "jat": "./bin/jat"
+    "jaq": "./bin/jaq"
   },
   "dependencies": {
     "colors": "*",
