@@ -6,8 +6,8 @@ var fs = require('fs'),
     run = require('../lib/run');
 
 program
-  .option('-n, --no-colors', 'No colors')
-  .option('-f, --name-only', 'Only print the names of files with matching properties')
+  .option('-c, --colors', 'colorize output')
+  .option('-n, --name-only', 'only print the names of files with matching properties')
   .parse(process.argv);
 
 var accessor = program.args[0],
