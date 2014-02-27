@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+/* vim: set filetype=javascript : */
 
 var fs = require('fs'),
     colors = require('colors'),
@@ -6,9 +7,21 @@ var fs = require('fs'),
     run = require('../lib/run');
 
 program
+  .usage("[options] <accessor> <file>")
   .option('-c, --colors', 'colorize output')
   .option('-n, --name-only', 'only print the names of files with matching properties')
   .parse(process.argv);
+
+program.on('--help', function() {
+  console.log('  Examples:');
+  console.log('    jaq [options] "[0]" file.json');
+  console.log('    jaq [options] "id" file.json');
+  console.log('    jaq [options] "[0].id" file.json');
+});
+
+if(program.args.length === 0) {
+  program.help();
+}
 
 var accessor = program.args[0],
     files = program.args.slice(1);
