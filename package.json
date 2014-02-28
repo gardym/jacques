@@ -20,5 +20,6 @@
     "jasmine-node": "*"
   },
   "author": "Mike Gardiner",
+  "email": "conversationing@gmail.com",
   "license": "BSD-2-Clause"
 }
