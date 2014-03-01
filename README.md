@@ -2,6 +2,10 @@
 
 Refreshin' your tea, guv'nor?
 
+#### Install
+
+    $ npm install jaques -g
+
 #### Search your json.
 
     $ jaq --help
