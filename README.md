@@ -26,6 +26,8 @@ Refreshin' your tea, guv'nor?
     file.json
     1
 
+    $ curl -s https://api.github.com/users/gardym/orgs | jaq "[0].login"
+    vanderhuge-industries
 
 #### Licence?
 

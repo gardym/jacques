@@ -34,6 +34,30 @@ var colorize = function(str, color) {
   return str[color];
 };
 
+var showResults = function(result, file) {
+  if(result) {
+    if(file) {
+      console.log(colorize(file, 'cyan'));
+    }
+    if(!program.nameOnly) {
+      console.log(result);
+    }
+  }
+};
+
+var runFromStdin = function(accessor) {
+  var lines = [];
+  process.stdin.resume();
+  process.stdin.setEncoding('utf8');
+  process.stdin.on('data', function(data) {
+    lines.push(data);
+  });
+
+  process.stdin.on('end', function() {
+    showResults(run.inContext(accessor, lines.join('')));
+  });
+};
+
 var runFromFile = function(file, accessor) {
   fs.readFile(file, function(err, contents) {
     if(err) {
@@ -41,18 +65,15 @@ var runFromFile = function(file, accessor) {
       throw err;
     }
 
-    var result = run.inContext(accessor, contents);
-
-    if(result) {
-      console.log(colorize(file, 'cyan'));
-      if(!program.nameOnly) {
-        console.log(result);
-      }
-    }
+    showResults(run.inContext(accessor, contents), file);
   });
 };
 
-files.forEach(function(fileName) {
-  runFromFile(fileName, accessor);
-});
+if(files.length > 0) {
+  files.forEach(function(fileName) {
+    runFromFile(fileName, accessor);
+  });
+} else {
+  runFromStdin(accessor);
+}
 
