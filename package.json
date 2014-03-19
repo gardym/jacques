@@ -1,8 +1,8 @@
 {
   "name": "jaques",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Classily enquire about one's JSON.",
-  "keywords": "json parse utils jaques",
+  "keywords": ["json", "parse", "utils", "jaques"],
   "homepage": "https://github.com/gardym/jaques",
   "bin": { "jaq": "./bin/jaq" },
   "engines" : { "node" : ">=0.10.0" },
